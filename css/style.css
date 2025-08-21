@@ -1,0 +1,602 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #0f0f0f;
+    color: #fff;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: #0f0f0f;
+    padding: 20px 0;
+    border-bottom: 1px solid #222;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 28px;
+    color: #fff;
+}
+
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.nav-wiki {
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+.wiki-link {
+    color: #aaa;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.3s;
+    position: relative;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+.wiki-link:hover {
+    color: #fff;
+}
+
+.wiki-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s;
+}
+
+.wiki-link:hover::after {
+    width: 100%;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #222;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 18px;
+}
+
+.social-icons a:hover {
+    background-color: #6d77fd;
+    transform: translateY(-3px);
+}
+
+.main-content {
+    display: flex;
+    gap: 40px;
+    margin: 80px 0 60px 0;
+    min-height: 60vh;
+    align-items: center;
+}
+
+.text-content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.image-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.image-wrapper {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+    opacity: 0;
+    transform: translateX(100px);
+    animation: slideIn 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.server-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #fff;
+    line-height: 1.2;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.server-info {
+    background-color: #0f0f0f;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.copy-btn {
+    background-color: #6d77fd;
+    color: white;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0 0 0;
+}
+
+.copy-btn:hover {
+    background-color: #5b65e0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(109, 119, 253, 0.3);
+}
+
+footer {
+    background-color: #0f0f0f;
+    color: #fff;
+    padding: 30px 0;
+    margin-top: 80px;
+    border-top: 1px solid #222;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-text {
+    font-size: 16px;
+    color: #aaa;
+}
+
+.wiki-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.wiki-content {
+    background-color: rgba(26, 26, 26, 0.95);
+    margin: 30px auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    max-height: 700px;
+    position: relative;
+    border: 1px solid #333;
+    backdrop-filter: blur(10px);
+    display: flex;
+}
+
+.close-wiki {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 32px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 1001;
+}
+
+.close-wiki:hover {
+    color: #fff;
+}
+
+.wiki-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #444;
+}
+
+/* Боковое меню - ТЕПЕРЬ СО СКРОЛЛОМ */
+.wiki-sidebar {
+    width: 300px;
+    background: rgba(40, 40, 40, 0.7);
+    border-right: 1px solid #444;
+    border-radius: 20px 0 0 20px;
+    padding: 30px 0;
+    overflow-y: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.wiki-menu-category {
+    margin-bottom: 20px;
+}
+
+.wiki-menu-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    padding: 15px 25px;
+    background: rgba(50, 50, 50, 0.5);
+    border-left: 4px solid #ffffff;
+    margin-bottom: 10px;
+}
+
+.wiki-menu-item {
+    padding: 12px 25px 12px 35px;
+    color: #cccccc;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.wiki-menu-item:hover {
+    background: rgba(60, 60, 60, 0.4);
+    color: #ffffff;
+    border-left: 3px solid #ffffff;
+}
+
+.wiki-menu-item.active {
+    background: rgba(70, 70, 70, 0.5);
+    color: #ffffff;
+    border-left: 3px solid #ffffff;
+}
+
+/* Контентная область - ИСПРАВЛЕНА СТРУКТУРА */
+.wiki-main-content {
+    flex: 1;
+    padding: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.wiki-content-section {
+    display: none;
+    flex: 1;
+    overflow: hidden;
+    flex-direction: column;
+    height: 100%;
+}
+
+.wiki-content-section.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.content-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #444;
+}
+
+.content-text {
+    color: #dddddd;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.content-list {
+    list-style: none;
+    margin-bottom: 25px;
+    padding-left: 0;
+}
+
+.content-list li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+    color: #dddddd;
+    word-wrap: break-word;
+}
+
+.content-list li:before {
+    content: "•";
+    color: #ffffff;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+}
+
+/* Контейнер для скролла контента - ИСПРАВЛЕН */
+.content-scroll-container {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Гарантируем, что скроллбар будет виден когда контент длинный */
+.content-scroll-container:not(:has(> :only-child)) {
+    overflow-y: auto;
+}
+
+/* Кастомные скроллбары для контента */
+.content-scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-scroll-container::-webkit-scrollbar-track {
+    background: rgba(40, 40, 40, 0.3);
+    border-radius: 4px;
+}
+
+.content-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(80, 80, 80, 0.6);
+    border-radius: 4px;
+    border: 2px solid rgba(26, 26, 26, 0.95);
+}
+
+.content-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 100, 100, 0.8);
+}
+
+/* Кастомные скроллбары для бокового меню */
+.wiki-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.wiki-sidebar::-webkit-scrollbar-track {
+    background: rgba(30, 30, 30, 0.3);
+    border-radius: 4px;
+}
+
+.wiki-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(70, 70, 70, 0.6);
+    border-radius: 4px;
+}
+
+.wiki-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(90, 90, 90, 0.8);
+}
+
+/* Для Firefox */
+.content-scroll-container, .wiki-sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(80, 80, 80, 0.6) rgba(40, 40, 40, 0.3);
+}
+
+.wiki-loading {
+    text-align: center;
+    padding: 40px;
+    color: #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.wiki-loading i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+/* Ссылки внутри контента */
+.content-scroll-container a {
+    color: #ffffff;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.content-scroll-container a:hover {
+    color: #6d77fd;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .main-content {
+        flex-direction: column;
+        margin: 60px 0 40px 0;
+        text-align: center;
+    }
+    
+    .text-content {
+        padding-right: 0;
+    }
+    
+    h1 {
+        font-size: 36px;
+    }
+    
+    .image-wrapper {
+        transform: translateX(0);
+        animation: slideInMobile 1s ease-out forwards;
+        animation-delay: 0.3s;
+    }
+    
+    .wiki-content {
+        flex-direction: column;
+        margin: 20px auto;
+        width: 95%;
+        height: auto;
+        max-height: 80vh;
+    }
+    
+    .wiki-sidebar {
+        width: 100%;
+        border-right: none;
+        border-radius: 20px 20px 0 0;
+        padding: 20px;
+        max-height: 200px;
+    }
+    
+    .wiki-main-content {
+        padding: 25px;
+        max-height: none;
+        height: auto;
+    }
+    
+    .wiki-title {
+        font-size: 28px;
+    }
+    
+    .content-scroll-container {
+        padding-right: 5px;
+        height: auto;
+        max-height: 400px;
+    }
+    
+    @keyframes slideInMobile {
+        0% {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .nav-wiki {
+        order: 3;
+        width: 100%;
+        text-align: center;
+        margin: 10px 0 0 0;
+    }
+    
+    .copy-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .wiki-menu-header {
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+    
+    .wiki-menu-item {
+        padding: 10px 20px 10px 30px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 32px;
+    }
+    
+    .copy-btn {
+        padding: 16px 25px;
+        font-size: 18px;
+    }
+    
+    p {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+    
+    .wiki-title {
+        font-size: 24px;
+    }
+    
+    .content-title {
+        font-size: 22px;
+    }
+    
+    .content-scroll-container::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .wiki-sidebar::-webkit-scrollbar {
+        width: 4px;
+    }
+}

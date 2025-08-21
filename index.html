@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRTCraft - Майнкрафт сервер</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-cube"></i></div>
+                    <div class="logo-text">FRTCraft</div>
+                </div>
+                
+                <div class="nav-wiki">
+                    <a class="wiki-link" onclick="openWiki()">Вики</a>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="https://t.me/FreeRun4ikK" target="_blank" title="Telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                    <a href="https://discord.gg/8SvPuvF4Vn" target="_blank" title="Discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://www.twitch.tv/freerun4ik" target="_blank" title="Twitch">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="text-content">
+                <h1>Ванильный<br>Майнкрафт сервер</h1>
+                
+                <p>FRTCraft - это ванильный сервер майнкрафт.<br>
+                Без гриферов, приватов или доната.</p>
+                
+                <div class="server-info">
+                    <button class="copy-btn" id="copyButton">
+                        <i class="fas fa-copy"></i>
+                        Скопировать IP
+                    </button>
+                </div>
+            </div>
+            
+            <div class="image-content">
+                <div class="image-wrapper">
+                    <img src="images/server-image.jpg" alt="FRTCraft Server">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">IP: FRTCraft.ru</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно Вики -->
+    <div id="wikiModal" class="wiki-modal">
+        <div class="wiki-content">
+            <span class="close-wiki" onclick="closeWiki()">&times;</span>
+            
+            <div class="wiki-sidebar">
+                <div class="wiki-menu-category">
+                    <div class="wiki-menu-header">Начало игры</div>
+                    <div class="wiki-menu-item" onclick="showContent('overview')">Обзор</div>
+                    <div class="wiki-menu-item" onclick="showContent('allowed-mods')">Разрешенные моды</div>
+                </div>
+                
+                <div class="wiki-menu-category">
+                    <div class="wiki-menu-header">Правила</div>
+                    <div class="wiki-menu-item" onclick="showContent('general-rules')">Общие</div>
+                    <div class="wiki-menu-item" onclick="showContent('communication-rules')">Общение</div>
+                    <div class="wiki-menu-item" onclick="showContent('moderation-rules')">Модерация</div>
+                </div>
+                
+                <div class="wiki-menu-category">
+                    <div class="wiki-menu-header">Игровой процесс</div>
+                    <div class="wiki-menu-item" onclick="showContent('server-description')">Описание</div>
+                    <div class="wiki-menu-item" onclick="showContent('server-commands')">Команды сервера</div>
+                </div>
+            </div>
+            
+            <div class="wiki-main-content">
+                <div id="wikiLoading" class="wiki-loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Выберите раздел для просмотра</p>
+                </div>
+                
+                <div id="contentContainer" class="wiki-content-section">
+                    <!-- Контент будет загружен через JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
