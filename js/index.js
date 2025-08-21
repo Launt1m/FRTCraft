@@ -97,9 +97,7 @@ window.onclick = function(event) {
     }
 }
 
-// Добавляем анимацию для элементов при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    // Анимация для заголовка и текста
     const title = document.querySelector('h1');
     const paragraphs = document.querySelectorAll('p');
     
@@ -114,4 +112,5 @@ document.addEventListener('DOMContentLoaded', function() {
             p.style.transform = 'translateY(0)';
         }, 200 + (index * 100));
     });
+
 });
